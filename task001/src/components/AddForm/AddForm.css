@@ -1,0 +1,19 @@
+.add-item {
+    padding: 0;
+    top: 50px;
+}
+#add-form {
+    width: 50%;
+    display: inline-block;
+    position: absolute;
+    padding-left: 50px;
+}
+.add-block {
+    width: 30%;
+}
+.option span::after {
+    display: block;
+    content: 'X';
+    width: 9px;
+    height: 9px;
+}
