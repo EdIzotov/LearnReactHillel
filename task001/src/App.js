@@ -35,10 +35,24 @@ class App extends Component {
   addItem = item => {
     const {items} = this.state
     item.count = +item.count
-    const updatedItems = [
-      ...items,
-      item
-    ]
+    let existed = false
+    let updatedItems = []
+    for (let i = 0; i < items.length; i++) {
+      console.log(items[i].name === item.name)
+      console.log(items[i].category === item.category)
+      if (items[i].name === item.name && items[i].category === item.category) {
+        items[i].count = +items[i].count + item.count
+        existed = true
+        updatedItems = items
+        break
+      }
+    }
+    if (!existed) {
+      updatedItems = [
+        ...items,
+        item
+      ]
+    }
     this.setState({
       items: updatedItems
     })

@@ -4,7 +4,6 @@ import './AddItemForm.css'
 class AddItemForm extends Component {
     state = {
         name: '',
-        categoryItem: '',
         category: this.props.categories.length > 0 ? this.props.categories[0] : '',
         price: 0,
         count: 0
@@ -23,7 +22,7 @@ class AddItemForm extends Component {
         const {addItem} = this.props
         if (+this.state.count > 0) {
             addItem(this.state)
-            this.setState({name: '', category: '', price: 0, count: 0})
+            this.setState({name: '', category: this.props.categories.length > 0 ? this.props.categories[0] : '', price: 0, count: 0})
         }
     }
     handleOnCategoryRemove = () => {
