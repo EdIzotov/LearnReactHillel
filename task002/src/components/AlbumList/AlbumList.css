@@ -1,0 +1,5 @@
+#post-list.scroll {
+    height: 200px;
+    overflow: scroll;
+    float: left;
+}

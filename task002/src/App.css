@@ -1,0 +1,15 @@
+.App {
+    width: 70%;
+    margin: 0 auto;
+}
+#post-list {
+    margin: 0;
+}
+div.loader {
+    width: 300px;
+    background-color: #fff;
+    text-align: center;
+}
+hr {
+    border-top: 3px solid #5993bc;
+}
