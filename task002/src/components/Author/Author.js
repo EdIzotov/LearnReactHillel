@@ -12,9 +12,9 @@ class Author extends Component {
         buttonTitle: 'DETAILS'
     }
     displayMore = () => {
-        this.state.buttonTitle === 'DETAILS' ? 
-        this.setState({buttonTitle: 'HIDE'}) :
-        this.setState({buttonTitle: 'DETAILS'})
+        this.setState(state => ({
+            buttonTitle: state.buttonTitle === 'DETAILS' ? 'HIDE' : 'DETAILS'
+        }))
     }
     loadAuthor() {
         this.setState({

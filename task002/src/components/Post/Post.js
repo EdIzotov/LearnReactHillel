@@ -13,9 +13,9 @@ class Post extends Component {
         updateAuthorId(userid)
     }
     displayMore = () => {
-        this.state.buttonTitle === 'MORE' ? 
-        this.setState({buttonTitle: 'HIDE'}) :
-        this.setState({buttonTitle: 'MORE'})
+        this.setState(state => ({
+            buttonTitle: state.buttonTitle === 'MORE' ? 'HIDE' : 'MORE'
+        }))
     }
     render() {
         const {userid, postid, title, body} = this.props
@@ -44,7 +44,8 @@ Post.propTypes = {
     userid: PropTypes.number.isRequired, 
     postid: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    body: PropTypes.string
+    body: PropTypes.string,
+    updateAuthorId: PropTypes.func
 }
 
 export default Post

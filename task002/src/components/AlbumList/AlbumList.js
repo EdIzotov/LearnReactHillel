@@ -30,16 +30,14 @@ class AlbumList extends Component {
         this.loadAlbums()
     }
     render() {
-        const albumViews = []
-        this.state.albums.forEach((album, index) => {
-            albumViews.push(<Album 
-                key={album.id} 
-                title={album.title}><Divider variant="inset" component="li" /></Album>)
-        })
         return (
             <div id="post-list" className="scroll">
                 <List xs={12}>
-                    {(this.state.isLoading && <div className="loader"><CircularProgress /></div>) || albumViews}
+                    {this.state.isLoading && <div className="loader"><CircularProgress /></div>}
+                    {this.state.albums.map(album => <Album
+                        key={album.id} 
+                        title={album.title}><Divider variant="inset" component="li" />
+                    </Album>)}
                 </List>
             </div>
         )

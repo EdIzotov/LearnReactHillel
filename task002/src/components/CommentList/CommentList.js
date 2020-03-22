@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { List, CircularProgress, Divider } from '@material-ui/core'
+import PropTypes from 'prop-types'
 import { getCommentsByPostId } from '../../api'
 import Comment from '../Comment/Comment'
 
@@ -29,23 +30,26 @@ class CommentList extends Component {
         this.loadComments()
     }
     render() {
-        const commentViews = []
-        this.state.comments.forEach((comment, index) => {
-            commentViews.push(<Comment 
-                key={comment.id} 
-                id={comment.id}
-                username={comment.name} 
-                email={comment.email}
-                body={comment.body}><Divider variant="inset" component="li" /></Comment>)
-        })
         return (
             <div id="post-list">
                 <List xs={12}>
-                    {(this.state.isLoading && <div className="loader"><CircularProgress /></div>) || commentViews}
+                    {this.state.isLoading && <div className="loader"><CircularProgress /></div>}
+                    {this.state.comments.map(comment => <Comment
+                            key={comment.id} 
+                            id={comment.id}
+                            username={comment.name} 
+                            email={comment.email}
+                            body={comment.body}
+                        ><Divider variant="inset" component="li" /></Comment>
+                    )}
                 </List>
             </div>
         )
     }
+}
+
+CommentList.propTypes = {
+    postid: PropTypes.number.isRequired
 }
 
 export default CommentList
