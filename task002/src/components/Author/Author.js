@@ -4,6 +4,7 @@ import { Card, CardActionArea, CardActions, CardContent, Typography, CircularPro
 import DetailList from '../AlbumList/AlbumList'
 import { getAuthorById } from '../../api'
 import './Author.css'
+import PostProvider from '../../providers/PostProvider'
 
 class Author extends Component {
     state = {
@@ -51,6 +52,9 @@ class Author extends Component {
                             <Typography gutterBottom variant="h5" component="h2">{this.state.author.name}</Typography>
                             <Typography gutterBottom variant="h5" component="h2">{this.state.author.username}</Typography>
                             <Typography gutterBottom variant="h5" component="h2">{this.state.author.email}</Typography>
+                        <PostProvider>{(posts, isLoading) => {
+                            return null
+                        }}</PostProvider>
                         </CardContent>)}
                         <hr />
                         {(this.state.buttonTitle === 'HIDE') && <DetailList authorId={this.state.author.id} />}

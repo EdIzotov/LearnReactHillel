@@ -1,0 +1,29 @@
+#task-list {
+    margin-top: auto;
+    text-align: left;
+    margin: 0 auto;
+}
+#task-list > div {
+    width: 50%;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+}
+#controls {
+    display: flex;
+    position: relative;
+}
+#buttons {
+    position: absolute;
+    right: 0;
+}
+.light {
+    background-color: #5993bc;
+    color: #fff;
+}
+.inline {
+    display: inline-block;
+    width: 500px;
+
+}

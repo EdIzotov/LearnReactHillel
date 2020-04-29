@@ -1,46 +1,32 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Grid, CircularProgress } from '@material-ui/core'
-import { getAllPosts } from '../../api'
 import Post from '../Post/Post'
+import PostProvider from '../../providers/PostProvider'
 
 class PostList extends Component {
-    state = {
-        posts: [],
-        isLoading: false
-    }
-    loadPosts() {
-        this.setState({
-            isLoading: true
-        })
-        getAllPosts().then(response => {
-            this.setState({
-                posts: response,
-                isLoading: false
-            })
-        }).catch(error => {
-            console.log(error)
-            this.setState({
-                isLoading: false
-            })
-        })
-    }
-    componentDidMount() {
-        this.loadPosts()
-    }
     render() {
         return (
             <div id="post-list">
                 <Grid item xs={12}>
-                    {this.state.isLoading && <div className="loader"><CircularProgress /></div>}
-                    {this.state.posts.map(post => <Post
-                        key={post.id} 
-                        userid={post.userId} 
-                        postid={post.id}
-                        title={post.title}
-                        body={post.body}
-                        updateAuthorId={this.props.updateAuthorId}
-                    ></Post>)}
+                    <PostProvider>
+                        {(posts, isLoading) => {
+                            return (
+                                <div>
+                                    {isLoading && <div className="loader"><CircularProgress /></div>}
+                                    {posts.map(post => <Post
+                                        key={post.id} 
+                                        userid={post.userId} 
+                                        postid={post.id}
+                                        title={post.title}
+                                        body={post.body}
+                                        updateAuthorId={this.props.updateAuthorId}
+                                    ></Post>)}
+                                </div>
+                            )
+
+                        }}
+                    </PostProvider>
                 </Grid>
             </div>
         )
