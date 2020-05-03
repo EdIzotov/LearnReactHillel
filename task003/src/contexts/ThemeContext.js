@@ -1,8 +1,8 @@
 import React from 'react'
 
 const ThemeContext = React.createContext({
-    theme: localStorage.getItem('taskListTheme') ? localStorage.getItem('taskListTheme') : 'light',
-    setTheme: () => {}
+    theme: '',
+    toggleTheme: () => {}
 })
 
 export default ThemeContext

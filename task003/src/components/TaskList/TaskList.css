@@ -22,6 +22,10 @@ h1 {
     background-color: #5993bc;
     color: #fff;
 }
+.night {
+    background-color: #000;
+    color: #aaa;
+}
 .inline {
     display: inline-block;
     width: 500px;
